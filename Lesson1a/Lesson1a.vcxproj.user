@@ -8,15 +8,15 @@
     <QTDIR>D:\Qt\5.6.3\msvc2015_64</QTDIR>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommand>D:\My Documents\max2020\Athena_A757_RL_x64_complete_exe\3dsmax.exe</LocalDebuggerCommand>
-    <LocalDebuggerWorkingDirectory>D:\My Documents\max2020\Athena_A757_RL_x64_complete_exe</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(ADSK_3DSMAX_x64_2023)\3dsmax.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(ADSK_3DSMAX_x64_2023)</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
     <QTDIR>D:\Qt\5.6.3\msvc2015_64</QTDIR>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LocalDebuggerCommand>D:\My Documents\max2020\Athena_A757_RL_x64_complete_exe\3dsmax.exe</LocalDebuggerCommand>
-    <LocalDebuggerWorkingDirectory>D:\My Documents\max2020\Athena_A757_RL_x64_complete_exe</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(ADSK_3DSMAX_x64_2023)\3dsmax.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(ADSK_3DSMAX_x64_2023)</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
     <QTDIR>D:\Qt\5.6.3\msvc2015_64</QTDIR>

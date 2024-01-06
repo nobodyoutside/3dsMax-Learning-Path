@@ -18,3 +18,5 @@
 **/install32/
 *.sdf
 *.aps
+**/.vs
+**/x64
