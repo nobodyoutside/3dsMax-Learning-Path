@@ -47,6 +47,8 @@ set(PLUGIN_SOURCES
     DllEntry.cpp
     Lesson1a.cpp
     QtPluginRollup.cpp
+    QtPluginRollup.h
+    resource.h
     Lesson1a.rc
     plugin_form.ui
 )
