@@ -10,7 +10,7 @@
 // AUTHOR: 
 //***************************************************************************/
 
-#include "lesson1a.h"
+#include "Lesson1a.h"
 
 extern ClassDesc2* GetUtilitySampleDesc();
 

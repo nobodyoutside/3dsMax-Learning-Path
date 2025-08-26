@@ -53,13 +53,13 @@ public:
 	virtual int           IsPublic() override                       { return TRUE; }
 	virtual void*         Create(BOOL /*loading = FALSE*/) override { return UtilitySample::GetInstance(); }
 	virtual const TCHAR * ClassName() override                      { return GetString(IDS_CLASS_NAME); }
+	virtual const wchar_t* NonLocalizedClassName() override { return _T("UtilitySample"); }
 	virtual SClass_ID     SuperClassID() override                   { return UTILITY_CLASS_ID; }
 	virtual Class_ID      ClassID() override                        { return UTILITYSAMPLE_CLASS_ID; }
 	virtual const TCHAR*  Category() override                       { return GetString(IDS_CATEGORY); }
 
 	virtual const TCHAR*  InternalName() override                   { return _T("lesson1a"); } // Returns fixed parsable name (scripter-visible name)
 	virtual HINSTANCE     HInstance() override                      { return hInstance; } // Returns owning module handle
-
 
 };
 
