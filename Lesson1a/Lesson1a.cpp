@@ -10,7 +10,7 @@
 // AUTHOR: Drew Avis
 //***************************************************************************/
 
-#include "lesson1a.h"
+#include "Lesson1a.h"
 
 #include "ui_plugin_form.h"
 #include "qmessagebox.h"
