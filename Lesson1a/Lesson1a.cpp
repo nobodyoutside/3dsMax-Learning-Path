@@ -87,12 +87,13 @@ UtilitySample::~UtilitySample()
 void UtilitySample::BeginEditParams(Interface* ip,IUtil* iu) 
 {
 	this->iu = iu;
-	widget = new QWidget;
-	ui.setupUi(widget);
+	// 충돌로 주석 처리함.
+	// widget = new QWidget;
+	// ui.setupUi(widget);
 
-	// We can connect UI signals here using Qt Functor syntax
-	QObject::connect(ui.pushButton, &QPushButton::clicked, this, &UtilitySample::DoSomething);
-	ip->AddRollupPage(*widget, L"Plug-in Rollup");
+	// // We can connect UI signals here using Qt Functor syntax
+	// QObject::connect(ui.pushButton, &QPushButton::clicked, this, &UtilitySample::DoSomething);
+	// ip->AddRollupPage(*widget, L"Plug-in Rollup");
 
 	ip->PushPrompt(_M("Hello World from Lesson 1.  Called from BeginEditParams()"));
 }
