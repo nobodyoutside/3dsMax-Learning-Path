@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "maxsdk",
+			"path": "C:\\Program Files\\Autodesk\\3ds Max 2024 SDK\\maxsdk"
+		},
+		{
+			"name": "Qt",
+			"path": "C:/QtGit/install"
+		},
+		{
+			"name" : "build",
+			"path" : "C:\\Users\\nobod\\AppData\\Local\\Autodesk\\3dsMax\\2024 - 64bit\\Plugins"
+		}
+
+	],
+	"settings": {
+		"dotnet.defaultSolution": "disable"
+	}
+}
