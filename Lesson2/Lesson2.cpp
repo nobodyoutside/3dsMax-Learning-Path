@@ -78,6 +78,7 @@ public:
 	virtual int IsPublic() 							{ return TRUE; }
 	virtual void* Create(BOOL /*loading = FALSE*/) 		{ return new Lesson2(); }
 	virtual const TCHAR *	ClassName() 			{ return GetString(IDS_CLASS_NAME); }
+	virtual const wchar_t* NonLocalizedClassName() override { return _T("Lesson2"); }
 	virtual SClass_ID SuperClassID() 				{ return SCENE_EXPORT_CLASS_ID; }
 	virtual Class_ID ClassID() 						{ return Lesson2_CLASS_ID; }
 	virtual const TCHAR* Category() 				{ return GetString(IDS_CATEGORY); }
@@ -209,9 +210,12 @@ int	Lesson2::DoExport(const TCHAR *name,ExpInterface *ei,Interface *i, BOOL supp
 void Lesson2::Export(INode* pNode, int iTreeDepth /* = 0 */)
 {
 	// First step to export: What are we exporting?
+	// 내보내기 첫 단계: 무엇을 내보낼 것인가?
 	// Here we are going to export the basic scene tree,
+    // 여기서는 기본 장면 트리를 내보낼 것이며,
 	// identifying each node by name.
-
+    // 각 노드를 이름으로 식별합니다.
+	
 	MCHAR * pNodeName = const_cast<MCHAR*>(pNode->GetName());
 	int nChildren = pNode->NumberOfChildren();
 
