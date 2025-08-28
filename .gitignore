@@ -18,4 +18,6 @@
 **/install32/
 *.sdf
 *.aps
+**/.vs
+**/x64
 **/build_hybrid/

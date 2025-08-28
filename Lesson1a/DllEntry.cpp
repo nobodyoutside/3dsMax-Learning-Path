@@ -45,12 +45,15 @@ __declspec( dllexport ) const TCHAR* LibDescription()
 
 // This function returns the number of plug-in classes this DLL
 //TODO: Must change this number when adding a new class
+// 이 함수는 이 DLL의 플러그 인 클래스 수를 반환합니다.
+// TODO: 새 클래스를 추가할 때 이 번호를 변경해야 합니다.
 __declspec( dllexport ) int LibNumberClasses()
 {
 	return 1;
 }
 
 // This function returns the number of plug-in classes this DLL
+// 이 함수는 이 DLL의 플러그 인 클래스 수를 반환합니다.
 __declspec( dllexport ) ClassDesc* LibClassDesc(int i)
 {
 	switch(i)
@@ -63,6 +66,8 @@ __declspec( dllexport ) ClassDesc* LibClassDesc(int i)
 // This function returns a pre-defined constant indicating the version of 
 // the system under which it was compiled.  It is used to allow the system
 // to catch obsolete DLLs.
+// 이 함수는 다음을 나타내는 미리 정의된 상수를 반환합니다.컴파일된 시스템의 버전입니다.
+//그것이 시스템이 사용되지 않는 DLL을 catch할 수 있도록 하는 데 사용됩니다.
 __declspec( dllexport ) ULONG LibVersion()
 {
 	return VERSION_3DSMAX;

@@ -18,6 +18,7 @@ public:
 	virtual void DeleteThis() { }		
 	virtual void BeginEditParams(Interface *ip,IUtil *iu);
 	virtual void EndEditParams(Interface *ip,IUtil *iu);
+	virtual void PushPrompt() {}
 	
 	static SampleUtil* GetInstance() 
 	{ 
@@ -41,4 +42,8 @@ public:
 	virtual const TCHAR* Category() 				{ return _T("Learning Path"); }
 	virtual const TCHAR* InternalName() 			{ return _T("Lesson1b-SampleUtil"); }
 	virtual HINSTANCE HInstance() 					{ return hInstance; }
+
+	virtual const TCHAR* NonLocalizedClassName() override {
+		return _T("UtilitySample");
+	}
 };

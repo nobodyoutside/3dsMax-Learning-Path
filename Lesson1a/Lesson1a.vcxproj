@@ -18,32 +18,57 @@
     <ProjectName>Lesson1a</ProjectName>
     <ProjectGuid>{6671F0BA-6FB8-4f35-8392-0676D05113A8}</ProjectGuid>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <MaxSDK>C:\Program Files\Autodesk\3ds Max 2020 SDK\maxsdk</MaxSDK>
+    <MaxSDK>F:\cpp\3ds Max 2023 SDK\maxsdk</MaxSDK>
     <Keyword>Qt4VS</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <QTDIR>C:\Qt\5.15.1\msvc2019_64\</QTDIR>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <Import Project="$(MaxSDK)\ProjectSettings\PropertySheets\3dsmax.general.project.settings.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Hybrid|x64'">
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="F:\cpp\3ds Max 2023 SDK\maxsdk\ProjectSettings\propertySheets\3dsmax.general.project.settings.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="PropertySheets">
     <Import Project="$(MaxSDK)\ProjectSettings\PropertySheets\3dsmax.cpp.props" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="PropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Hybrid|x64'">
+    <Import Project="PropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="PropertySheet.props" />
+  </ImportGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Platform)'=='x64'">C:\Program Files\Autodesk\3ds Max 2020 SDK\maxsdk\Plugins\</OutDir>
+    <OutDir Condition="'$(Platform)'=='x64'">C:\Program Files\Autodesk\3ds Max 2023\Plugins\</OutDir>
     <IntDir>$(ProjectDir)\obj\$(MaxPlatform)\$(MaxConfiguration)\</IntDir>
     <TargetName>lesson1a</TargetName>
     <TargetExt>.dlu</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>F:\cpp\3ds Max 2023 SDK\maxsdk\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\cpp\3ds Max 2023 SDK\maxsdk\lib;$(LibraryPath)</LibraryPath>
+    <PublicIncludeDirectories>$(ADSK_3DSMAX_SDK_2023)\include;$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <PreprocessorDefinitions>_USRDLL;QT_CORE_LIB; QT_GUI_LIB; QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(MaxSdkInc);$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\cpp\3ds Max 2023 SDK\maxsdk\include;C:\Qt\5.15.1\msvc2019_64\include;C:\Qt\5.15.1\msvc2019_64\include\QtCore;C:\Qt\5.15.1\msvc2019_64\include\QtGui;C:\Qt\5.15.1\msvc2019_64\include\QtANGLE;C:\Qt\5.15.1\msvc2019_64\include\QtWidgets;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(MaxSdkLib);$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>bmm.lib;core.lib;geom.lib;gfx.lib;mesh.lib;maxutil.lib;maxscrpt.lib;gup.lib;paramblk2.lib;;Qt5Core.lib;Qt5Cored.lib;Qt5Gui.lib;Qt5Guid.lib;Qt5Widgets.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\cpp\3ds Max 2023 SDK\maxsdk\lib\x64\Release;C:\Qt\5.15.1\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>bmm.lib;core.lib;geom.lib;gfx.lib;mesh.lib;maxutil.lib;maxscrpt.lib;gup.lib;paramblk2.lib;Qt5Core.lib;Qt5Cored.lib;Qt5Gui.lib;Qt5Guid.lib;Qt5Widgets.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>lesson1a.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
@@ -54,12 +79,19 @@
     <ClCompile Include="QtPluginRollup.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="plugin_form.ui">
+    <ResourceCompile Include="plugin_form.ui">
       <AdditionalInputs>$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message>Uic%27ing %(Identity)...</Message>
       <Outputs>.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command>"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
-    </CustomBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"C:\Qt\5.15.1\msvc2019_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Qt\5.15.1\msvc2019_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"C:\Qt\5.15.1\msvc2019_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Qt\5.15.1\msvc2019_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Hybrid|x64'">"C:\Qt\5.15.1\msvc2019_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Hybrid|x64'">C:\Qt\5.15.1\msvc2019_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <FileType>Document</FileType>
+    </ResourceCompile>
     <None Include="lesson1a.def" />
   </ItemGroup>
   <ItemGroup>
