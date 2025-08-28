@@ -80,7 +80,7 @@ public:
 	virtual SClass_ID     SuperClassID() override                   { return UTILITY_CLASS_ID; }
 	virtual Class_ID      ClassID() override                        { return SAMPLEREF_CLASS_ID; }
 	virtual const TCHAR*  Category() override                       { return GetString(IDS_CATEGORY); }
-
+	virtual const wchar_t* NonLocalizedClassName() override { return _T("UtilitySample"); }
 	virtual const TCHAR*  InternalName() override                   { return _T("SampleRef"); } // Returns fixed parsable name (scripter-visible name)
 	virtual HINSTANCE     HInstance() override                      { return hInstance; } // Returns owning module handle
 
@@ -113,12 +113,12 @@ SampleRef::~SampleRef()
 void SampleRef::BeginEditParams(Interface* ip,IUtil* iu) 
 {
 	this->iu = iu;
-	widget = new QWidget;
-	ui.setupUi(widget);
+	// widget = new QWidget;
+	// ui.setupUi(widget);
 
 	// We can connect UI signals here using Qt Functor syntax
-	QObject::connect(ui.pushButton, &QPushButton::clicked, this, &SampleRef::DoSomething);
-	ip->AddRollupPage(*widget, L"Referenced Node");
+	// QObject::connect(ui.pushButton, &QPushButton::clicked, this, &SampleRef::DoSomething);
+	// ip->AddRollupPage(*widget, L"Referenced Node");
 
 }
 

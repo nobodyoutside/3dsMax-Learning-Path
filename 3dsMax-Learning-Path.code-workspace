@@ -18,6 +18,9 @@
 
 	],
 	"settings": {
-		"dotnet.defaultSolution": "disable"
+		"dotnet.defaultSolution": "disable",
+		"files.associations": {
+			"xlocinfo": "cpp"
+		}
 	}
 }
