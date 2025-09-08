@@ -15,7 +15,7 @@ set(ADSK_3DSMAX_SDK_2024 "C:/Program Files/Autodesk/3ds Max 2024 SDK/maxsdk" CAC
 # (선택) 3ds Max 설치 루트 - 설정 시 빌드 후 플러그인 자동 복사
 set(ADSK_3DSMAX_x64_2024 "C:/Program Files/Autodesk/3ds Max 2024" CACHE PATH "3ds Max root for optional deployment")
 # Qt 위치 (Qt5Config.cmake 있는 곳). 이미 환경에 맞춰 수정.
-set(Qt5_DIR "C:/QtGit/install/lib/cmake/Qt5" CACHE PATH "Qt5 Config path")
+set(Qt5_DIR "C:/QtGit/msvc2019_64" CACHE PATH "Qt5 Config path")
 
 # ===================== 기본 컴파일 설정 =====================
 set(CMAKE_CXX_STANDARD 17)
@@ -38,7 +38,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-list(APPEND CMAKE_PREFIX_PATH "${Qt5_DIR}/..")
+list(APPEND CMAKE_PREFIX_PATH "${Qt5_DIR}")
 # Qt 5.15.x 전체 허용 (정확히 5.15.1이 아니어도)
 find_package(Qt5 5.15 COMPONENTS Core Gui Widgets REQUIRED)
 
@@ -171,7 +171,7 @@ endif()
 # =============== 선택적: Qt DLL 배포 (windeployqt 사용) ===============
 option(DEPLOY_QT_RUNTIME "Run windeployqt for produced binary" OFF)
 if (DEPLOY_QT_RUNTIME)
-    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${Qt5_DIR}/../../../bin" "${Qt5_DIR}/../../bin")
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${Qt5_DIR}/bin" "${Qt5_DIR}/bin")
     if (WINDEPLOYQT_EXECUTABLE)
         add_custom_command(TARGET Lesson1a POST_BUILD
             COMMAND "${WINDEPLOYQT_EXECUTABLE}" --no-translations --no-compiler-runtime "$<TARGET_FILE:Lesson1a>"

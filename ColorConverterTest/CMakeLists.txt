@@ -15,7 +15,7 @@ set(ADSK_3DSMAX_SDK_2024 "C:/Program Files/Autodesk/3ds Max 2024 SDK/maxsdk" CAC
 # (선택) 3ds Max 설치 루트 - 설정 시 빌드 후 플러그인 자동 복사
 set(ADSK_3DSMAX_x64_2024 "C:/Program Files/Autodesk/3ds Max 2024" CACHE PATH "3ds Max root for optional deployment")
 # Qt 위치 (Qt5Config.cmake 있는 곳). 이미 환경에 맞춰 수정.
-set(Qt5_DIR "C:/QtGit/install/lib/cmake/Qt5" CACHE PATH "Qt5 Config path")
+set(Qt5_DIR "C:/QtGit/msvc2019_64" CACHE PATH "Qt5 Config path")
 
 # ===================== 기본 컴파일 설정 =====================
 set(CMAKE_CXX_STANDARD 17)
@@ -38,7 +38,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-list(APPEND CMAKE_PREFIX_PATH "${Qt5_DIR}/..")
+list(APPEND CMAKE_PREFIX_PATH "${Qt5_DIR}")
 # Qt 5.15.x 전체 허용 (정확히 5.15.1이 아니어도)
 find_package(Qt5 5.15 COMPONENTS Core Gui Widgets REQUIRED)
 
@@ -55,6 +55,16 @@ set(PLUGIN_SOURCES
     QtPluginRollup.cpp
     QtPluginRollup.h
     resource.h
+    # Utils 소스 파일들 추가
+    utils/ColorManagementAPIs.cpp
+    utils/ColorManagementAPIs.h
+    utils/QColorEyeDropper.cpp
+    utils/QColorEyeDropper.h
+    utils/QColorRectWidget.cpp
+    utils/QColorRectWidget.h
+    utils/QColorSwatchWidget.cpp
+    utils/QColorSwatchWidget.h
+    
 )
 
 add_library(ColorConverterTest SHARED ${PLUGIN_SOURCES})
@@ -63,11 +73,16 @@ add_library(ColorConverterTest SHARED ${PLUGIN_SOURCES})
 target_include_directories(ColorConverterTest
     PRIVATE
         "${ADSK_3DSMAX_SDK_2024}/include"
+        "${Qt5_DIR}/include"
         "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.29.30133/atlmfc/include"
+        "${CMAKE_CURRENT_SOURCE_DIR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/utils"
+        "${CMAKE_CURRENT_SOURCE_DIR}/GeneratedFiles"
 )
 
 # =============== 구성별 라이브러리 경로 ===============
 link_directories("${ADSK_3DSMAX_SDK_2024}/lib/x64/Release")
+link_directories("${Qt5_DIR}/lib")
 # 3ds Max SDK 는 통상 lib/x64/Release, lib/x64/Debug 구조 (Debug 폴더 없을 수도 있음)
 set(_max_lib_base "${ADSK_3DSMAX_SDK_2024}/lib/x64")
 target_link_directories(
