@@ -21,3 +21,4 @@
 **/.vs
 **/x64
 **/build_hybrid/
+ColorConverterTest/out

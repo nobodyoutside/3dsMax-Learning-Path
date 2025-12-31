@@ -1,8 +1,10 @@
 3dsMax-Learning-Path
 ====================
 
-- [ ] 2024용 CMake 빌드로 테스트.
+ sdk 샘플 학슴용 프로젝트
+ 
 
+- [ ] 2024용 CMake 빌드로 테스트.
 
 
 This repo contains Visual Studio 2015 projects for example code located in the 3ds Max SDK Documentation Learning Path section.
